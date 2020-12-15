@@ -5,12 +5,6 @@ def sum2(arr):
             return ans
 
 
-
-
-
-
-
-
 def sum3(arr):
     arr = sorted(arr)
     for i in range(len(arr)):
