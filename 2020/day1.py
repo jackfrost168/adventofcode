@@ -1,5 +1,4 @@
 def sum2(arr):
-    ans = 0
     for a in arr:
         if 2020 - a in arr:
             ans = a * (2020 - a)
@@ -7,7 +6,6 @@ def sum2(arr):
 
 
 def sum3(arr):
-    ans = 0
     arr = sorted(arr)
     for i in range(len(arr)):
         j = i + 1
@@ -29,9 +27,11 @@ def main():
     for line in lines:
         line = line.strip('\n')  # take away '\n'
         input.append(int(line))
+
     ans1 = sum2(input)
     print("part1:", ans1)
     ans2 = sum3(input)
     print("part2:", ans2)
+
 
 main()
