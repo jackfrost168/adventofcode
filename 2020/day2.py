@@ -13,6 +13,7 @@ def part1(input):
             ans = ans + 1
     return ans
 
+
 def part2(input):
     ans = 0
     for line in input:
@@ -24,6 +25,7 @@ def part2(input):
             (string[pos1-1] != target and string[pos2-1] == target):
             ans = ans + 1
     return ans
+
 
 def main():
     f = open("input2.txt", "r")  # open file
@@ -44,5 +46,6 @@ def main():
     print("part1:", ans1)
     ans2 = part2(input)
     print("part2:", ans2)
+
 
 main()
