@@ -23,10 +23,10 @@ def sum3(arr):
 def main():
     f = open("input1.txt", "r")  # open file
     lines = f.readlines()  # read line, lines stores the txt file
-    input = []
-    for line in lines:
-        line = line.strip('\n')  # take away '\n'
-        input.append(int(line))
+    input = [int(line.strip()) for line in lines]
+    # for line in lines:
+    #     line = line.strip('\n')  # take away '\n'
+    #     input.append(int(line))
 
     ans1 = sum2(input)
     print("part1:", ans1)
