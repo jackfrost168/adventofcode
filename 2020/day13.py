@@ -51,17 +51,17 @@ def part2(a, m): #Chinese Remainder Theorem
 
 
 def main():
-    f = open('input/input13.txt', 'r')
-    lines = f.readlines()
-    arrive_time = int(lines[0].strip('\n'))
-    line2 = lines[1].strip('\n')
-    bus = line2.split(',')
-    buses = []
-    a = []
-    for i, s in enumerate(bus):
-        if s != 'x':
-            buses.append(int(s))
-            a.append(i)
+    with open('input/input13.txt', 'r') as f:
+        lines = f.readlines()
+        arrive_time = int(lines[0].strip('\n'))
+        line2 = lines[1].strip('\n')
+        bus = line2.split(',')
+        buses = []
+        a = []
+        for i, s in enumerate(bus):
+            if s != 'x':
+                buses.append(int(s))
+                a.append(i)
 
     ans1 = part1(arrive_time, buses)
     print('part1:', ans1)

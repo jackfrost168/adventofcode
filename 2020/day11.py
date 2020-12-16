@@ -97,9 +97,9 @@ def part2(input, direction):
 
 
 def main():
-    f = open("input/input11.txt", "r")  # open file
-    lines = f.readlines()  # read line, lines stores the txt file
-    input = [list(line.strip()) for line in lines]
+    with open("input/input11.txt", "r") as f:  # open file
+        lines = f.readlines()  # read line, lines stores the txt file
+        input = [list(line.strip()) for line in lines]
 
     direction = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
     input1 = copy.deepcopy(input)
@@ -108,5 +108,6 @@ def main():
     input2 = copy.deepcopy(input)
     ans2 = part2(input2, direction)
     print('part2:', ans2)
+
 
 main()

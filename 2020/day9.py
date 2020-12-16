@@ -21,9 +21,9 @@ def part2(input, target):
 
 
 def main():
-    f = open("input/input9.txt", "r")  # open file
-    lines = f.readlines()  # read line, lines stores the txt file
-    input = [int(line.strip()) for line in lines]
+    with open("input/input9.txt", "r") as f: # open file
+        lines = f.readlines()  # read line, lines stores the txt file
+        input = [int(line.strip()) for line in lines]
 
     ans1 = part1(input)
     print('part1:', ans1)

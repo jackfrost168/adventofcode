@@ -64,8 +64,8 @@ def part2(ticket_fileds, valid_tickets, your_ticket):
 
 
 def main():
-    f = open('input/input16.txt', 'r')
-    lines = f.readlines()
+    with open('input/input16.txt', 'r') as f:
+        lines = f.readlines()
     ticket_fileds = {}
     i = 0
     your_ticket = ''

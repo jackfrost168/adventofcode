@@ -80,25 +80,24 @@ def part2(masks):
 
 
 def main():
-    f = open('input/input14.txt', 'r')
-    lines = f.readlines()
-    masks = {}
-    i = 0
-    mask = ''
-    for line in lines:
-        if line[0: 4] == 'mask':
-            line = line.strip('\n')
-            line = line.split('=')
-            mask = line[1].strip(' ')
-            masks[mask] = []
-            i = i + 1
-        else:
-            line = line.strip('\n')
-            line = line.split('=')
-            address = int(line[0][4:-2])
-            value = int(line[1])
-            masks[mask].append((address, value))
-    # print(masks)
+    with open('input/input14.txt', 'r') as f:
+        lines = f.readlines()
+        masks = {}
+        i = 0
+        mask = ''
+        for line in lines:
+            if line[0: 4] == 'mask':
+                line = line.strip('\n')
+                line = line.split('=')
+                mask = line[1].strip(' ')
+                masks[mask] = []
+                i = i + 1
+            else:
+                line = line.strip('\n')
+                line = line.split('=')
+                address = int(line[0][4:-2])
+                value = int(line[1])
+                masks[mask].append((address, value))
 
     ans1 = part1(masks)
     print('part1:', ans1)

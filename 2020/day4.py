@@ -81,18 +81,18 @@ def part2(input):
 
 
 def main():
-    f = open("input/input4.txt", "r")  # open file
-    lines = f.readlines()  # read line, lines stores the txt file
-    input = []
-    tmp = ""
-    for line in lines:
-        line = line.strip('\n')  # take away '\n'
-        if len(line) != 0:
-            tmp = tmp + line + " "
-        else:
-            input.append(tmp)
-            tmp = ''
-    input.append(tmp)
+    with open("input/input4.txt", "r") as f: # open file
+        lines = f.readlines()  # read line, lines stores the txt file
+        input = []
+        tmp = ""
+        for line in lines:
+            line = line.strip('\n')  # take away '\n'
+            if len(line) != 0:
+                tmp = tmp + line + " "
+            else:
+                input.append(tmp)
+                tmp = ''
+        input.append(tmp)
 
     ans1 = part1(input)
     print("part1:", ans1)

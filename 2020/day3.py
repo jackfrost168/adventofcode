@@ -14,9 +14,9 @@ def slope(input, right, down):
 
 
 def main():
-    f = open("input/input3.txt", "r")  # open file
-    lines = f.readlines()  # read line, lines stores the txt file
-    input = [line.strip() for line in lines]
+    with open("input/input3.txt", "r") as f: # open file
+        lines = f.readlines()  # read line, lines stores the txt file
+        input = [line.strip() for line in lines]
 
     ans1 = slope(input, 3, 1)
     print("part1:", ans1)

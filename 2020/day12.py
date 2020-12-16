@@ -56,14 +56,14 @@ def part2(input):
 
 
 def main():
-    f = open("input/input12.txt", "r")  # open file
-    lines = f.readlines()  # read line, lines stores the txt file
-    input = []
-    for line in lines:
-        line = line.strip('\n')
-        action = line[0]
-        value = int(line[1:])
-        input.append((action, value))
+    with open("input/input12.txt", "r") as f: # open file
+        lines = f.readlines()  # read line, lines stores the txt file
+        input = []
+        for line in lines:
+            line = line.strip('\n')
+            action = line[0]
+            value = int(line[1:])
+            input.append((action, value))
 
     ans1 = part1(input)
     print('part1:', ans1)

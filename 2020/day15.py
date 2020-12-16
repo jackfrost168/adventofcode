@@ -33,9 +33,9 @@ def solution(input, stop_turn):
 
 
 def main():
-    f = open('input/input15.txt').read()
-    f = f.strip('\n').split(',')
-    input = [int(s) for s in f]  # input = [6,19,0,5,7,13,1]
+    with open('input/input15.txt') as f:
+        f = f.read().strip('\n').split(',')
+        input = [int(s) for s in f]  # input = [6,19,0,5,7,13,1]
 
     ans1 = solution(input, 2020)
     print('part1:', ans1)

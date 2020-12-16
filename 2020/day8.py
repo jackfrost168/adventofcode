@@ -58,13 +58,13 @@ def part2(input):
 
 
 def main():
-    f = open("input/input8.txt", "r")  # open file
-    lines = f.readlines()  # read line, lines stores the txt file
-    input = {}
-    for id, line in enumerate(lines):
-        line = line.strip('\n')  # take away '\n'
-        line = line.split(' ')
-        input[id] = [line[0], int(line[1]), 0]
+    with open("input/input8.txt", "r") as f: # open file
+        lines = f.readlines()  # read line, lines stores the txt file
+        input = {}
+        for id, line in enumerate(lines):
+            line = line.strip('\n')  # take away '\n'
+            line = line.split(' ')
+            input[id] = [line[0], int(line[1]), 0]
 
     input1 = copy.deepcopy(input)
     ans1 = part1(input1)

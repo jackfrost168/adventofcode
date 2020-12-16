@@ -53,11 +53,11 @@ def part2(input):
 
 
 def main():
-    f = open("input/input10.txt", "r")  # open file
-    lines = f.readlines()  # read line, lines stores the txt file
-    input = [int(line.strip()) for line in lines]
-    input.append(0)
-    input.append(max(input) + 3)
+    with open("input/input10.txt", "r") as f: # open file
+        lines = f.readlines()  # read line, lines stores the txt file
+        input = [int(line.strip()) for line in lines]
+        input.append(0)
+        input.append(max(input) + 3)
 
     ans1 = part1(input)
     print('part1:', ans1)

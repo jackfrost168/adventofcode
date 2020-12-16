@@ -28,19 +28,19 @@ def part2(input):
 
 
 def main():
-    f = open("input/input2.txt", "r")  # open file
-    lines = f.readlines()  # read line, lines stores the txt file
-    input = []  # [2, 9, 'g', 'jpxcgggzgsgngrhght']
-    for line in lines:
-        line = line.strip('\n')
-        line = line.split(" ")  # take away '\n'
-        tmp = []
-        r = line[0].split('-')
-        tmp.append(int(r[0]))
-        tmp.append((int(r[1])))
-        tmp.append(line[1][0]) #single word
-        tmp.append(line[2]) #string
-        input.append(tmp)
+    with open("input/input2.txt", "r") as f: # open file
+        lines = f.readlines()  # read line, lines stores the txt file
+        input = []  # [2, 9, 'g', 'jpxcgggzgsgngrhght']
+        for line in lines:
+            line = line.strip('\n')
+            line = line.split(" ")  # take away '\n'
+            tmp = []
+            r = line[0].split('-')
+            tmp.append(int(r[0]))
+            tmp.append((int(r[1])))
+            tmp.append(line[1][0]) #single word
+            tmp.append(line[2]) #string
+            input.append(tmp)
 
     ans1 = part1(input)
     print("part1:", ans1)
