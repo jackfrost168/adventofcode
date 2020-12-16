@@ -7,7 +7,7 @@ def part1(ticket_fileds, nearby_tickets):
             value_valid = False
             for key in ticket_fileds:
                 for (lower_bound, upper_bound) in ticket_fileds[key]:
-                    if lower_bound <= value and value <= upper_bound:
+                    if lower_bound <= value <= upper_bound:
                         value_valid = True
                         break
                 if value_valid == True:
@@ -21,6 +21,7 @@ def part1(ticket_fileds, nearby_tickets):
 
     return ans, valid_tickets
 
+
 def part2(ticket_fileds, valid_tickets, your_ticket):
     fields = [[] for i in range(len(your_ticket))]
     for j in range(len(valid_tickets[0])):
@@ -30,7 +31,7 @@ def part2(ticket_fileds, valid_tickets, your_ticket):
                 value = valid_tickets[i][j]
                 value_valid = False
                 for (lower_bound, upper_bound) in ticket_fileds[key]:
-                    if lower_bound <= value and value <= upper_bound:
+                    if lower_bound <= value <= upper_bound:
                         value_valid = True
                         break
 
