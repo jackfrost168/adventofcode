@@ -53,7 +53,7 @@ def part2(input):
 
 
 def main():
-    f = open("input10.txt", "r")  # open file
+    f = open("input/input10.txt", "r")  # open file
     lines = f.readlines()  # read line, lines stores the txt file
     input = [int(line.strip()) for line in lines]
     input.append(0)

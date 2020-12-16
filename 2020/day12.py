@@ -56,7 +56,7 @@ def part2(input):
 
 
 def main():
-    f = open("input12.txt", "r")  # open file
+    f = open("input/input12.txt", "r")  # open file
     lines = f.readlines()  # read line, lines stores the txt file
     input = []
     for line in lines:

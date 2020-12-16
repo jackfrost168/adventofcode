@@ -58,7 +58,7 @@ def part2(input):
 
 
 def main():
-    f = open("input8.txt", "r")  # open file
+    f = open("input/input8.txt", "r")  # open file
     lines = f.readlines()  # read line, lines stores the txt file
     input = {}
     for id, line in enumerate(lines):

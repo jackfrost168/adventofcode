@@ -97,7 +97,7 @@ def part2(input, direction):
 
 
 def main():
-    f = open("input11.txt", "r")  # open file
+    f = open("input/input11.txt", "r")  # open file
     lines = f.readlines()  # read line, lines stores the txt file
     input = [list(line.strip()) for line in lines]
 

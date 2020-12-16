@@ -51,7 +51,7 @@ def part2(a, m): #Chinese Remainder Theorem
 
 
 def main():
-    f = open('input13.txt', 'r')
+    f = open('input/input13.txt', 'r')
     lines = f.readlines()
     arrive_time = int(lines[0].strip('\n'))
     line2 = lines[1].strip('\n')

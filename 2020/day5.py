@@ -1,4 +1,4 @@
-f = open("input5.txt", "r") #open file
+f = open("input/input5.txt", "r") #open file
 lines = f.readlines()        #read line, lines stores the txt file
 input = [line.strip() for line in lines]
 

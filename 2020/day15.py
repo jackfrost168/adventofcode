@@ -33,7 +33,7 @@ def solution(input, stop_turn):
 
 
 def main():
-    f = open('input15.txt').read()
+    f = open('input/input15.txt').read()
     f = f.strip('\n').split(',')
     input = [int(s) for s in f]  # input = [6,19,0,5,7,13,1]
 

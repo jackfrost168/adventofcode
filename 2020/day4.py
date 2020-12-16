@@ -81,7 +81,7 @@ def part2(input):
 
 
 def main():
-    f = open("input4.txt", "r")  # open file
+    f = open("input/input4.txt", "r")  # open file
     lines = f.readlines()  # read line, lines stores the txt file
     input = []
     tmp = ""

@@ -29,7 +29,7 @@ def part2(input):
 
 
 def main():
-    f = open("input6.txt", "r")  # open file
+    f = open("input/input6.txt", "r")  # open file
     lines = f.readlines()  # read line, lines stores the txt file
     input = []
     tmp = []

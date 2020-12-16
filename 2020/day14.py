@@ -80,7 +80,7 @@ def part2(masks):
 
 
 def main():
-    f = open('input14.txt', 'r')
+    f = open('input/input14.txt', 'r')
     lines = f.readlines()
     masks = {}
     i = 0
