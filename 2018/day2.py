@@ -40,9 +40,9 @@ def part2(input):
 
 
 def main():
-    f = open("input/input2.txt", "r")  # open file
-    lines = f.readlines()  # read line, lines stores the txt file
-    input = [line.strip() for line in lines]
+    with open("input/input2.txt", "r") as f: # open file
+        lines = f.readlines()  # read line, lines stores the txt file
+        input = [line.strip() for line in lines]
 
     ans1 = part1(input)
     print('part1:', ans1)

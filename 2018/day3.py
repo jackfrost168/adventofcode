@@ -43,21 +43,21 @@ def part2(input, fabric):
 
 
 def main():
-    f = open('input/input3.txt', 'r')
-    lines = f.readlines()
-    input = {}
-    for line in lines:
-        line = line.strip('\n')
-        line = line.split(' ')
-        id = int(line[0][1:])
-        pos = str(line[2]).replace(':', '')
-        pos = pos.split(',')
-        x = int(pos[1])
-        y = int(pos[0])
-        area = str(line[3]).split('x')
-        width = int(area[0])
-        height = int(area[1])
-        input[id] = (x, y, width, height)
+    with open('input/input3.txt', 'r') as f:
+        lines = f.readlines()
+        input = {}
+        for line in lines:
+            line = line.strip('\n')
+            line = line.split(' ')
+            id = int(line[0][1:])
+            pos = str(line[2]).replace(':', '')
+            pos = pos.split(',')
+            x = int(pos[1])
+            y = int(pos[0])
+            area = str(line[3]).split('x')
+            width = int(area[0])
+            height = int(area[1])
+            input[id] = (x, y, width, height)
 
     fabric = areas(input)
     ans1 = part1(fabric)

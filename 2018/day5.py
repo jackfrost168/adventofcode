@@ -30,8 +30,9 @@ def part2(text):
 
 
 def main():
-    f = open('input/input5.txt', 'r')
-    text = f.read().strip('\n')
+    with open('input/input5.txt', 'r') as f:
+        text = f.read().strip('\n')
+
     ans1 = part1(text)
     print('part1:', ans1)
     ans2 = part2(text)
