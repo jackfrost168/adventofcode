@@ -10,13 +10,13 @@ def part1(ticket_fileds, nearby_tickets):
                     if lower_bound <= value <= upper_bound:
                         value_valid = True
                         break
-                if value_valid == True:
+                if value_valid:
                     break
 
-            if value_valid == False:
+            if not value_valid:
                 ans = ans + value
                 ticket_valid = False
-        if ticket_valid == True:
+        if ticket_valid:
             valid_tickets.append(ticket)
 
     return ans, valid_tickets
@@ -35,11 +35,11 @@ def part2(ticket_fileds, valid_tickets, your_ticket):
                         value_valid = True
                         break
 
-                if value_valid == False:
+                if not value_valid:
                     field_valid = False
                     break
 
-            if field_valid == True:
+            if field_valid:
                 fields[j].append(key)
 
     loop = True

@@ -86,7 +86,7 @@ def main():
         i = 0
         mask = ''
         for line in lines:
-            if line[0: 4] == 'mask':
+            if line.startswith('mask'):
                 line = line.strip('\n')
                 line = line.split('=')
                 mask = line[1].strip(' ')
