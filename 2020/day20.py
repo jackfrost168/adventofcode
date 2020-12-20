@@ -1,4 +1,4 @@
-with open('test.txt', 'r') as f:
+with open('input/input20.txt', 'r') as f:
     f = f.readlines()
     images = {}
     for line in f:
@@ -17,7 +17,7 @@ with open('test.txt', 'r') as f:
 # for line in images[2129]:
 #     print(line)
 
-side_length = 3
+side_length = 12
 
 def rotating(image, i):
     new_image = image[:]
@@ -37,7 +37,7 @@ def flipping(image, j):
     elif j == 1: #up/down
         for i in range(row // 2):
             new_image[i], new_image[row - 1 - i] = new_image[row - 1 - i], new_image[i]
-    else:
+    else:  #left/right not needed
         for m in new_image:
             for j in range(col // 2):
                 m[j], m[col - 1 - j] = m[col - 1 - j], m[j]
@@ -50,16 +50,15 @@ def flipping(image, j):
 #     print(line)
 
 
-big_image = {}
-def put_on(image, x, y):
+
+def put_on(big_image, image, x, y):
     big_image[(x, y)] = image
-    return big_image
 
 
-def put_off(image, x, y):
-    #big_image = big_image.pop((x, y))
+def put_off(big_image, image, x, y):
     del big_image[(x, y)]
-    return big_image
+
+
 
 def border_correct(big_image, x, y):
     #direction = [(0, 1), (0, -1), (1, 0), (-1, 0)]
@@ -89,39 +88,42 @@ def border_correct(big_image, x, y):
             if image[0][i] != neighbor_image[-1][i]:
                 return False
     return True
+#global stop
 
 import copy
-def part1(IDS, used, x, y):
-    #for key in images.keys():
-    if len(IDS) > 0:
-        key = IDS[0]
-        IDS.remove(key)
+def part1(big_image, IDS, used, x, y, stop):
+    if stop[0]:
+        return
     for key in IDS:
-    #for key in IDS:
         image = copy.deepcopy(images[key])
         if key in used:
             continue
         else:
             used.append(key)
-            #IDS.remove(key)
         for i in range(4):
             rotated_image = rotating(image, i)
-            for j in range(3):
+            for j in range(2):
                 flipped_image = flipping(rotated_image, j)
-                big_image = put_on(flipped_image, x, y)
+                put_on(big_image, flipped_image, x, y)
                 if border_correct(big_image, x, y):
                     if x == side_length-1 and y == side_length-1:
-                        print('ans')
+                        print('ans:', used)
+                        print('ans:', used[0],used[side_length-1],used[side_length*(side_length-1)],used[-1])
+                        print('part1:', used[0]*used[side_length-1]*used[side_length*(side_length-1)]*used[-1])
+                        stop[0] = True
                         return
                     elif y+1 >= side_length:
-                        y = 0
-                        part1(IDS, used, x+1, y)
+                        part1(big_image, IDS, used, x+1, 0, stop)
                     else:
-                        part1(IDS, used, x, y+1)
-                else:
-                    big_image = put_off(flipped_image, x, y)
+                        part1(big_image, IDS, used, x, y+1, stop)
+
+                put_off(big_image, flipped_image, x, y)
         used.pop()
-        IDS.append(key)
+
+big_image = {}
 used = []
 IDS = [key for key in images]
-part1(IDS, used, 0, 0)
+stop = [False]
+part1(big_image, IDS, used, 0, 0, stop)
+
+
