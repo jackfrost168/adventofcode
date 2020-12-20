@@ -125,5 +125,5 @@ used = []
 IDS = [key for key in images]
 stop = [False]
 part1(big_image, IDS, used, 0, 0, stop)
-
+def main()
 
