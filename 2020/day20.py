@@ -63,10 +63,11 @@ def border_correct(big_image, x, y):
 
 
 import copy
-def part1(images, big_image, IDS, used, x, y, stop):
+def part1(images, big_image, used, x, y, stop):
     if stop[0]:
         return
-    for key in IDS:
+    IDs = [key for key in images]
+    for key in IDs:
         image = copy.deepcopy(images[key])
         if key in used:
             continue
@@ -79,18 +80,15 @@ def part1(images, big_image, IDS, used, x, y, stop):
                 put_on(big_image, flipped_image, x, y)
                 if border_correct(big_image, x, y):
                     if x == side_length-1 and y == side_length-1:
-                        #print('ans:', used)
-                        #print('ans:', used[0],used[side_length-1],used[side_length*(side_length-1)],used[-1])
                         print('part1:', used[0]*used[side_length-1]*used[side_length*(side_length-1)]*used[-1])
                         stop[0] = True
                         global final_image
                         final_image = copy.deepcopy(big_image)
                         return
                     elif y+1 >= side_length:
-                        part1(images, big_image, IDS, used, x+1, 0, stop)
+                        part1(images, big_image, used, x+1, 0, stop)
                     else:
-                        part1(images, big_image, IDS, used, x, y+1, stop)
-
+                        part1(images, big_image, used, x, y+1, stop)
                 put_off(big_image, flipped_image, x, y)
         used.pop()
 
@@ -128,7 +126,7 @@ def monster_coordinate(monster):
     return monster_position
 
 
-def part2(monster, monster_position, actual_image):
+def part2(monster_position, actual_image):
     for r in range(4):
         rotated_image = rotating(actual_image, r)
         for f in range(2):
@@ -161,6 +159,7 @@ def part2(monster, monster_position, actual_image):
                         if sea_mask[i][j] == 0 and flipped_image[i][j] == '#':
                             ans = ans + 1
                 print('part2:', ans)
+                return
 
 
 final_image = {}
@@ -181,10 +180,9 @@ def main():
 
     big_image = {}
     used = []
-    IDS = [key for key in images]
     stop = [False]
 
-    part1(images, big_image, IDS, used, 0, 0, stop)
+    part1(images, big_image, used, 0, 0, stop)
     #print(final_image)
     #print(len(final_image.keys()))
 
@@ -193,13 +191,8 @@ def main():
                ' #  #  #  #  #  #   ']
 
     actual_image = merge(final_image)
-    #print(len(actual_image))
-    #print(len(actual_image[0]))
-
     monster_position = monster_coordinate(monster)
-    #print(monster_position)
-
-    part2(monster, monster_position, actual_image)
+    part2(monster_position, actual_image)
 
 
 main()
