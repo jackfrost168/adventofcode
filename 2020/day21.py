@@ -1,63 +1,55 @@
-def part1(input, appeared, f):
+def part1(input, appeared, list_of_foods):
     final_allergens = {}
-    while True:
-        if len(final_allergens.keys()) == len(input.keys()):
-            break
-        for key in input.keys():
-            if key in final_allergens.keys():
-                continue
-            num_allergens = 0
-            ingres = []
-            for ingredient in set(input[key]):
-                num_ingredient = input[key].count(ingredient)
-                if num_ingredient == appeared[key]:
-                    num_allergens += 1
-                    ingres.append(ingredient)
-            if num_allergens == 1:
-                final_allergens[key] = ingres[0]
-                for key in input.keys():
-                    while ingres[0] in input[key]:
-                        input[key].remove(ingres[0])
+    while input.keys():
+        allergens = input.keys()
+        for allergen in allergens:
+            ingredients_related_to_allergen = input[allergen]
+            count_valid_allergens = 0
+            valid_ingredients = []
+            for ingredient in set(ingredients_related_to_allergen):
+                same_ingredient = ingredients_related_to_allergen.count(ingredient)
+                if same_ingredient == appeared[allergen]:
+                    count_valid_allergens += 1
+                    valid_ingredients.append(ingredient)
+
+            if count_valid_allergens == 1:
+                final_allergens[allergen] = valid_ingredients[0]
+                del input[allergen]
+                for key in allergens:
+                    while valid_ingredients[0] in input[key]:
+                        input[key].remove(valid_ingredients[0])
                 break
 
-    #print(final_allergens)
+    cleared_ingredients = [final_allergens[key] for key in final_allergens.keys()]
 
-    items = []
-    for key in final_allergens.keys():
-        items.append(final_allergens[key])
-    #print(items)
     ans = 0
-    for line in f:
-        line = line.strip().split('(contains')
-        ingredients = line[0].strip().split(' ')
-        allergens = line[1].strip().split(',')
-        allergens[-1] = allergens[-1].replace(')', '')
-        no_aller_ingre = 0
-        copy_ingredients = ingredients[:]
-        for ingre in ingredients:
-            if ingre in items:
-                copy_ingredients.remove(ingre)
-        ans = ans + len(copy_ingredients)
+    for line in list_of_foods:
+        ingredients = line[:]
+        for ingredient in line:
+            if ingredient in cleared_ingredients:
+                ingredients.remove(ingredient)
+        ans = ans + len(ingredients)
 
     return ans, final_allergens
 
 
 def part2(final_allergens):
-    ans2 = ''
+    ans = ''
     for key in sorted(final_allergens.keys()):
-        ans2 = ans2 + final_allergens[key] + ','
-    return ans2[0:-1]
+        ans = ans + final_allergens[key] + ','
+    return ans[0:-1]
+
 
 def main():
     with open('input/input21.txt', 'r') as f:
-        # with open('test.txt', 'r') as f:
         f = f.readlines()
+        list_of_foods = []
         input = {}
         appeared = {}
         for line in f:
-            line = line.strip()
-            line = line.split('(contains')
+            line = line.strip().split('(contains')
             ingredients = line[0].strip().split(' ')
+            list_of_foods.append(ingredients)
             allergens = line[1].strip().split(',')
             allergens[-1] = allergens[-1].replace(')', '')
             for allergen in allergens:
@@ -68,10 +60,8 @@ def main():
                 else:
                     input[allergen] += ingredients
                     appeared[allergen] += 1
-        # print(input)
-        # for key in input.keys():
-        #     print(key, input[key])
-    ans1, final_allergens = part1(input, appeared, f)
+
+    ans1, final_allergens = part1(input, appeared, list_of_foods)
     print('part1:', ans1)
     ans2 = part2(final_allergens)
     print('part2:', ans2)
