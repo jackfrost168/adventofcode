@@ -10,13 +10,13 @@ def part1(player1, player2):
             player2.append(card_1)
 
     if player1:
-        player = player1[:]
+        winner = player1[:]
     else:
-        player = player2[:]
+        winner = player2[:]
 
     score = 0
-    weight = len(player)
-    for value in player:
+    weight = len(winner)
+    for value in winner:
         score += value * weight
         weight = weight - 1
     return score
@@ -50,12 +50,12 @@ def game(player1, player2):
             player2.append(card_1)
         if len(player1) == 50 or len(player2) == 50:
             if player1:
-                player = player1[:]
+                winner = player1[:]
             else:
-                player = player2[:]
+                winner = player2[:]
             score = 0
-            weight = len(player)
-            for value in player:
+            weight = len(winner)
+            for value in winner:
                 score += value * weight
                 weight = weight - 1
             print('part2:', score)
