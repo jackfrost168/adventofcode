@@ -1,6 +1,6 @@
-def read_input(part1, part2):
+def read_input(first_part, second_part):
     rules = {}
-    for line in part1:
+    for line in first_part:
         line = line.split(' ')
         if '|' in line:
             key = int(line[0][0:-1])
@@ -27,7 +27,8 @@ def read_input(part1, part2):
                 for i in range(1, len(line)):
                     tmp_rule.append(line[i])
                 rules[key].append(tmp_rule)
-    return rules, part2
+    return rules, second_part
+
 
 def find_combination(rules, key):
     if rules[key] == ['a']:
