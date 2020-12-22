@@ -33,21 +33,22 @@ def game(player1, player2):
 
         card_1 = player1.pop(0)
         card_2 = player2.pop(0)
-        final_winner = 0
+        winner = 0
         if card_1 <= len(player1) and card_2 <= len(player2):
-            final_winner = game(player1[0: card_1], player2[0: card_2])
+            winner = game(player1[0: card_1], player2[0: card_2])
         else:
             if card_1 > card_2:
-                final_winner = 1
+                winner = 1
             elif card_1 < card_2:
-                final_winner = 2
+                winner = 2
 
-        if final_winner == 1:
+        if winner == 1:
             player1.append(card_1)
             player1.append(card_2)
-        elif final_winner == 2:
+        elif winner == 2:
             player2.append(card_2)
             player2.append(card_1)
+
         if len(player1) == 50 or len(player2) == 50:
             if player1:
                 final_winner = player1[:]
