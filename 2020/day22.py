@@ -22,14 +22,14 @@ def part1(player1, player2):
     return score
 
 def game(player1, player2):
-    appeared_player1 = []
-    appeared_player2 = []
+    appeared_player1 = set()
+    appeared_player2 = set()
     while player1 and player2:
         if tuple(player1) in appeared_player1 and tuple(player2) in appeared_player2:
             return 1
         else:
-            appeared_player1.append(tuple(player1))
-            appeared_player2.append(tuple(player2))
+            appeared_player1.add(tuple(player1))
+            appeared_player2.add(tuple(player2))
 
         card_1 = player1.pop(0)
         card_2 = player2.pop(0)
