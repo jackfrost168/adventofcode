@@ -38,8 +38,8 @@ def part2(nums, moves):
     nodes = [Node(value) for value in nums]
     nodes[0].prev = nodes[-1]
     nodes[0].next = nodes[1]
-    nodes[len(nodes)-1].next = nodes[0]
-    nodes[len(nodes)-1].prev = nodes[len(nodes) - 2]
+    nodes[-1].next = nodes[0]
+    nodes[-1].prev = nodes[-2]
     for i in range(1, len(nodes)-1):
         nodes[i].next = nodes[i+1]
         nodes[i].prev = nodes[i-1]
