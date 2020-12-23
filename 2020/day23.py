@@ -1,9 +1,4 @@
-# with open('test.txt', 'r') as f:
-# with open('input/input23.txt', 'r') as f:
-#     f = f.readlines()
-
-
-def part(nums, moves):
+def part1(nums, moves):
     m = 0
     while m < moves:
         current = nums[0]
@@ -11,14 +6,14 @@ def part(nums, moves):
         nums.pop(1)
         nums.pop(1)
         nums.pop(1)
-        des_cup = current - 1
-        if des_cup == 0:
-            des_cup = 9
-        while des_cup not in nums:
-            des_cup = des_cup - 1
-            if des_cup == 0:
-                des_cup = 9
-        des_index = nums.index(des_cup)
+        dest_cup = current - 1
+        if dest_cup == 0:
+            dest_cup = 9
+        while dest_cup not in nums:
+            dest_cup = dest_cup - 1
+            if dest_cup == 0:
+                dest_cup = 9
+        des_index = nums.index(dest_cup)
         nums.insert(des_index + 1, first)
         nums.insert(des_index + 2, second)
         nums.insert(des_index + 3, third)
@@ -29,7 +24,7 @@ def part(nums, moves):
     index_1 = nums.index(1)
     ans = nums[index_1+1:] + nums[0: index_1]
     ans = [str(s) for s in ans]
-    print('part1:', ''.join(ans))
+    return ''.join(ans)
 
 
 class Node(object):
@@ -39,72 +34,64 @@ class Node(object):
         self.prev = None
 
 
-def part2(nums):
+def part2(nums, moves):
     nodes = [Node(value) for value in nums]
-    for i in range(len(nodes)):
-        if i == 0:
-            nodes[i].prev = nodes[-1]
-            nodes[i].next = nodes[i+1]
-        elif i == len(nodes) - 1:
-            nodes[i].next = nodes[0]
-            nodes[i].prev = nodes[i-1]
-        else:
-            nodes[i].next = nodes[i+1]
-            nodes[i].prev = nodes[i-1]
+    nodes[0].prev = nodes[-1]
+    nodes[0].next = nodes[1]
+    nodes[len(nodes)-1].next = nodes[0]
+    nodes[len(nodes)-1].prev = nodes[len(nodes) - 2]
+    for i in range(1, len(nodes)-1):
+        nodes[i].next = nodes[i+1]
+        nodes[i].prev = nodes[i-1]
 
     value_pos = {}
     for i, value in enumerate(nums):
         value_pos[value] = i
 
+    cups_length = len(nums)
     current = nodes[0]
     m = 0
-    while m < 10000000:
-        # if m % 1000000 == 0:
-        #     print(m)
+    while m < moves:
         first = current.next
         second = current.next.next
         third = current.next.next.next
 
-        des_cup = current.value - 1
-        if des_cup == 0:
-            des_cup = 1000000
-        while des_cup not in range(1, 1000001) or (des_cup == first.value or
-                                                   des_cup == second.value or
-                                                   des_cup == third.value):
-            des_cup = des_cup - 1
-            if des_cup == 0:
-                des_cup = 1000000
-        des_index = value_pos[des_cup]
+        dest_cup = current.value - 1
+        if dest_cup == 0:
+            dest_cup = cups_length
+        while dest_cup == first.value or dest_cup == second.value or dest_cup == third.value:
+            dest_cup = dest_cup - 1
+            if dest_cup == 0:
+                dest_cup = cups_length
+        dest_index = value_pos[dest_cup]
 
-        tmp = current.next
         current.next = third.next
         third.next.prev = current
 
-        third.next = nodes[des_index].next
-        nodes[des_index].next.prev = third
-        nodes[des_index].next = first
-        first.prev = nodes[des_index]
+        third.next = nodes[dest_index].next
+        nodes[dest_index].next.prev = third
+
+        nodes[dest_index].next = first
+        first.prev = nodes[dest_index]
 
         current = current.next
         m = m + 1
 
     id_1 = value_pos[1]
-    #print(nodes[id_1].next.value, nodes[id_1].next.next.value)
-    print('part2:', nodes[id_1].next.value*nodes[id_1].next.next.value)
+    return nodes[id_1].next.value*nodes[id_1].next.next.value
 
 
 def main():
-    f = '942387615'
-    nums = list(f)
-    nums = [int(s) for s in f]
-    part(nums, 100)
+    with open('input/input23.txt', 'r') as f:
+        f = f.read().strip()   #f = '942387615'
 
-    f = '942387615'
-
-    nums = list(f)
     nums = [int(s) for s in f]
+    ans1 = part1(nums[:], 100)
+    print('part1:', ans1)
+
     nums = nums + list(range(10, 1000001))
-    part2(nums)
+    ans2 = part2(nums, 10000000)
+    print('part2:', ans2)
 
 
 main()
