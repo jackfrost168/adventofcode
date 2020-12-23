@@ -1,5 +1,6 @@
 side_length = 12
 
+
 def rotating(image, i):
     new_image = image[:]
     for _ in range(i):

@@ -21,6 +21,7 @@ def part1(player1, player2):
         weight = weight - 1
     return score
 
+
 def game(player1, player2):
     appeared_player1 = set()
     appeared_player2 = set()
