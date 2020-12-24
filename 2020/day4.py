@@ -1,6 +1,6 @@
-def part1(input):
+def part1(passports):
     ans = 0
-    for passport in input:
+    for passport in passports:
         passport = passport.split(' ')
         valid = {'byr':0, 'iyr':0, 'eyr':0, 'ecl':0, 'pid':0, 'hcl': 0, 'hgt':0}
         for fields in passport:
@@ -16,9 +16,9 @@ def part1(input):
     return ans
 
 
-def part2(input):
+def part2(passports):
     ans = 0
-    for passport in input:
+    for passport in passports:
         passport = passport.split(' ')
         valid = {'byr':0, 'iyr':0, 'eyr':0, 'ecl':0, 'pid':0, 'hcl': 0, 'hgt':0}
         for fields in passport:
@@ -81,25 +81,23 @@ def part2(input):
 
 
 def main():
-    with open("input/input4.txt", "r") as f: # open file
-        lines = f.readlines()  # read line, lines stores the txt file
-        input = []
+    with open("input/input4.txt", "r") as f:
+        lines = f.readlines()
+        passports = []
         tmp = ""
         for line in lines:
-            line = line.strip('\n')  # take away '\n'
+            line = line.strip('\n')
             if len(line) != 0:
                 tmp = tmp + line + " "
             else:
-                input.append(tmp)
+                passports.append(tmp)
                 tmp = ''
-        input.append(tmp)
+        passports.append(tmp)
 
-    ans1 = part1(input)
+    ans1 = part1(passports)
     print("part1:", ans1)
-    ans2 = part2(input)
+    ans2 = part2(passports)
     print("part2:", ans2)
 
 
 main()
-
-
