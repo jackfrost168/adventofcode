@@ -50,6 +50,7 @@ def find_combination(rules, key):
         final_rules.extend(pre_rule)
     return final_rules
 
+
 def part1(rules, messages):
     rule_0 = find_combination(rules, 0)
     rule_0 = set(rule_0)
