@@ -1,22 +1,22 @@
-def part1(input):
+def part1(jolts):
     value = 0
     diff1 = 0
     diff3 = 0
-    while value != max(input):
-        if value+1 in input:
+    while value != max(jolts):
+        if value+1 in jolts:
             value = value + 1
             diff1 += 1
-        elif value+2 in input:
+        elif value+2 in jolts:
             value += 2
-        elif value+3 in input:
+        elif value+3 in jolts:
             value = value + 3
             diff3 += 1
 
     return diff3*diff1
 
 
-def part2(input):
-    array = sorted(input)
+def part2(jolts):
+    array = sorted(jolts)
     base_array = []
     i = 0
     while array[i] != max(array):
@@ -53,15 +53,15 @@ def part2(input):
 
 
 def main():
-    with open("input/input10.txt", "r") as f: # open file
-        lines = f.readlines()  # read line, lines stores the txt file
-        input = [int(line.strip()) for line in lines]
-        input.append(0)
-        input.append(max(input) + 3)
+    with open("input/input10.txt", "r") as f:
+        lines = f.readlines()
+        jolts = [int(line.strip()) for line in lines]
+        jolts.append(0)
+        jolts.append(max(jolts) + 3)
 
-    ans1 = part1(input)
+    ans1 = part1(jolts)
     print('part1:', ans1)
-    ans2 = part2(input)
+    ans2 = part2(jolts)
     print('part2:', ans2)
 
 
