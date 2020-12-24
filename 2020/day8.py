@@ -1,76 +1,75 @@
 import copy
 
-def part1(input):
+def part1(boot_code):
     accumulator = 0
     i = 0
-    while i < len(input.keys()):
-        instruction = input[i][0]
-        argument = input[i][1]
-        if input[i][2] == 1:
+    while i < len(boot_code.keys()):
+        instruction = boot_code[i][0]
+        argument = boot_code[i][1]
+        if boot_code[i][2] == 1:
             break
         else:
             if instruction == 'acc':
                 accumulator += argument
-                input[i][2] = 1
+                boot_code[i][2] = 1
                 i = i + 1
             elif instruction == 'nop':
-                input[i][2] = 1
+                boot_code[i][2] = 1
                 i = i + 1
             else:
-                input[i][2] = 1
+                boot_code[i][2] = 1
                 i = i + argument
     return accumulator
 
 
-def part2(input):
-    for key in input.keys():
-        cur_input = copy.deepcopy(input)
-        if input[key][0] == 'nop':
-            cur_input[key][0] = 'jmp'
-        elif input[key][0] == 'jmp':
-            cur_input[key][0] = 'nop'
+def part2(boot_code):
+    for key in boot_code.keys():
+        cur_boot_code = copy.deepcopy(boot_code)
+        if boot_code[key][0] == 'nop':
+            cur_boot_code[key][0] = 'jmp'
+        elif boot_code[key][0] == 'jmp':
+            cur_boot_code[key][0] = 'nop'
         else:
             continue
 
         accumulator = 0
         i = 0
         isloop = True
-        while i < len(cur_input.keys()):
-            instruction = cur_input[i][0]
-            argument = cur_input[i][1]
-            if cur_input[i][2] == 1:
+        while i < len(cur_boot_code.keys()):
+            instruction = cur_boot_code[i][0]
+            argument = cur_boot_code[i][1]
+            if cur_boot_code[i][2] == 1:
                 break
             else:
                 if instruction == 'acc':
                     accumulator += argument
-                    cur_input[i][2] = 1
+                    cur_boot_code[i][2] = 1
                     i = i + 1
                 elif instruction == 'nop':
-                    cur_input[i][2] = 1
+                    cur_boot_code[i][2] = 1
                     i = i + 1
                 else:
-                    cur_input[i][2] = 1
+                    cur_boot_code[i][2] = 1
                     i = i + argument
-        if i >= len(cur_input.keys()):
+        if i >= len(cur_boot_code.keys()):
             isloop = False
         if isloop == False:
             return accumulator
 
 
 def main():
-    with open("input/input8.txt", "r") as f: # open file
-        lines = f.readlines()  # read line, lines stores the txt file
-        input = {}
+    with open("input/input8.txt", "r") as f:
+        lines = f.readlines()
+        boot_code = {}
         for id, line in enumerate(lines):
-            line = line.strip('\n')  # take away '\n'
-            line = line.split(' ')
-            input[id] = [line[0], int(line[1]), 0]
+            line = line.strip('\n').split(' ')
+            boot_code[id] = [line[0], int(line[1]), 0]
 
-    input1 = copy.deepcopy(input)
-    ans1 = part1(input1)
+    boot_code1 = copy.deepcopy(boot_code)
+    ans1 = part1(boot_code1)
     print('part1:', ans1)
-    input2 = copy.deepcopy(input)
-    ans2 = part2(input2)
+    boot_code2 = copy.deepcopy(boot_code)
+    ans2 = part2(boot_code2)
     print('part2:', ans2)
 
 
