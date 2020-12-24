@@ -1,10 +1,11 @@
+import copy
 side_length = 12
 
 
 def rotating(image, i):
     new_image = image[:]
     for _ in range(i):
-        new_image[:] = map(list,zip(*new_image[::-1]))
+        new_image[:] = map(list, zip(*new_image[::-1]))
     new_image = ["".join(line) for line in new_image]
     return new_image
 
@@ -16,10 +17,10 @@ def flipping(image, j):
     col = len(new_image[0])
     if j == 0:
         pass
-    elif j == 1: #up/down
+    elif j == 1:  # up/down
         for i in range(row // 2):
             new_image[i], new_image[row - 1 - i] = new_image[row - 1 - i], new_image[i]
-    else:  #left/right not needed
+    else:  # left/right not needed
         for m in new_image:
             for j in range(col // 2):
                 m[j], m[col - 1 - j] = m[col - 1 - j], m[j]
@@ -63,7 +64,6 @@ def border_correct(big_image, x, y):
     return True
 
 
-import copy
 def part1(images, big_image, used, x, y, stop):
     if stop[0]:
         return
@@ -134,7 +134,7 @@ def part2(monster_position, actual_image):
             flipped_image = flipping(rotated_image, f)
 
             count_monster = 0
-            sea_mask = [[0] * len(flipped_image[0]) for i in range(len(flipped_image))]
+            sea_mask = [[0] * len(flipped_image[0]) for _ in range(len(flipped_image))]
             for i in range(len(flipped_image)):
                 for j in range(len(flipped_image[i])):
                     count = 0
@@ -164,6 +164,8 @@ def part2(monster_position, actual_image):
 
 
 final_image = {}
+
+
 def main():
     with open('input/input20.txt', 'r') as f:
         f = f.readlines()
@@ -184,8 +186,6 @@ def main():
     stop = [False]
 
     part1(images, big_image, used, 0, 0, stop)
-    #print(final_image)
-    #print(len(final_image.keys()))
 
     monster = ['                  # ',
                '#    ##    ##    ###',
