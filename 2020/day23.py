@@ -83,7 +83,7 @@ def part2(nums, moves):
 
 def main():
     with open('input/input23.txt', 'r') as f:
-        f = f.read().strip()   #f = '942387615'
+        f = f.read().strip()   # f = '942387615'
 
     nums = [int(s) for s in f]
     ans1 = part1(nums[:], 100)
