@@ -7,14 +7,14 @@ def record_appeared(appeared_num, age, turn):
             appeared_num[age].pop(0)
 
 
-def solution(input, stop_turn):
+def solution(starting_numbers, stop_turn):
     turn = 0
     appeared_num = {}
     last_num = 0
     while turn < stop_turn:
-        if turn < len(input):
-            last_num = input[turn]
-            starting_num = input[turn]
+        if turn < len(starting_numbers):
+            last_num = starting_numbers[turn]
+            starting_num = starting_numbers[turn]
             record_appeared(appeared_num, starting_num, turn)
         else:
             if len(appeared_num[last_num]) == 1:
@@ -35,11 +35,11 @@ def solution(input, stop_turn):
 def main():
     with open('input/input15.txt') as f:
         f = f.read().strip('\n').split(',')
-        input = [int(s) for s in f]  # input = [6,19,0,5,7,13,1]
+        starting_numbers = [int(s) for s in f]  # input = [6,19,0,5,7,13,1]
 
-    ans1 = solution(input, 2020)
+    ans1 = solution(starting_numbers, 2020)
     print('part1:', ans1)
-    ans2 = solution(input, 30000000)
+    ans2 = solution(starting_numbers, 30000000)
     print('part2:', ans2)
 
 
