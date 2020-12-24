@@ -1,5 +1,5 @@
 def part1(arrive_time, buses):
-    arrived = [True for i in range(len(buses))]
+    arrived = [True for _ in range(len(buses))]
 
     time = arrive_time
     while True:
@@ -15,7 +15,7 @@ def part1(arrive_time, buses):
         time += 1
 
 
-def EX_GCD(a,b,arr): #扩展欧几里得
+def EX_GCD(a,b,arr): # 扩展欧几里得
     if b == 0:
         arr[0] = 1
         arr[1] = 0
@@ -27,7 +27,7 @@ def EX_GCD(a,b,arr): #扩展欧几里得
     return g
 
 
-def ModReverse(a,n): #ax=1(mod n) 求a模n的乘法逆x
+def ModReverse(a,n): # ax=1(mod n) 求a模n的乘法逆x
     arr = [0,1,]
     gcd = EX_GCD(a,n,arr)
     if gcd == 1:
@@ -36,15 +36,15 @@ def ModReverse(a,n): #ax=1(mod n) 求a模n的乘法逆x
         return -1
 
 
-def part2(a, m): #Chinese Remainder Theorem
+def part2(a, m): # Chinese Remainder Theorem
     M = 1
     for mi in m:
         M = M * mi
     ans = 0
     for i in range(len(m)):
-        ai = -a[i] #?
+        ai = -a[i] # ?
         bi = M // m[i]
-        bi_ = ModReverse(bi, m[i]) #pow(bi, -1, m[i]) python3.8
+        bi_ = ModReverse(bi, m[i]) # pow(bi, -1, m[i]) python3.8
         ans = ans + ai*bi*bi_
 
     return ans % M
