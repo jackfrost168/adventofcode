@@ -1,6 +1,6 @@
-def part1(input):
+def part1(passwords):
     ans = 0
-    for line in input:
+    for line in passwords:
         lower_bound = line[0]
         upper_bound = line[1]
         target = line[2]
@@ -14,9 +14,9 @@ def part1(input):
     return ans
 
 
-def part2(input):
+def part2(passwords):
     ans = 0
-    for line in input:
+    for line in passwords:
         pos1 = line[0]
         pos2 = line[1]
         target = line[2]
@@ -30,7 +30,7 @@ def part2(input):
 def main():
     with open("input/input2.txt", "r") as f: # open file
         lines = f.readlines()  # read line, lines stores the txt file
-        input = []  # [2, 9, 'g', 'jpxcgggzgsgngrhght']
+        passwords = []  # [2, 9, 'g', 'jpxcgggzgsgngrhght']
         for line in lines:
             line = line.strip('\n')
             line = line.split(" ")  # take away '\n'
@@ -40,11 +40,11 @@ def main():
             tmp.append((int(r[1])))
             tmp.append(line[1][0]) #single word
             tmp.append(line[2]) #string
-            input.append(tmp)
+            passwords.append(tmp)
 
-    ans1 = part1(input)
+    ans1 = part1(passwords)
     print("part1:", ans1)
-    ans2 = part2(input)
+    ans2 = part2(passwords)
     print("part2:", ans2)
 
 
