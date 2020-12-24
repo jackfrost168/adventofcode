@@ -23,11 +23,11 @@ def sum3(arr):
 def main():
     with open("input/input1.txt", "r") as f: # open file
         f = f.readlines()  # read line, lines stores the txt file
-        input = [int(line.strip()) for line in f]
+        expense_report = [int(line.strip()) for line in f]
 
-    ans1 = sum2(input)
+    ans1 = sum2(expense_report)
     print("part1:", ans1)
-    ans2 = sum3(input)
+    ans2 = sum3(expense_report)
     print("part2:", ans2)
 
 
