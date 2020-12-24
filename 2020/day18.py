@@ -1,6 +1,6 @@
-def part1(input):
+def part1(expressions):
     ans = 0
-    for line in input:
+    for line in expressions:
         stack = []
         operator = []
         for s in line:
@@ -56,9 +56,9 @@ def precede(operator1, operator2):
             return '<'
 
 
-def part2(input):
+def part2(expressions):
     ans = 0
-    for line in input:
+    for line in expressions:
         line.append('#')
         stack = []
         operator = ['#']
@@ -96,10 +96,11 @@ def part2(input):
         ans = ans + stack[0]
     return ans
 
+
 def main():
     with open('input/input18.txt') as f:
         f = [line.strip().split(' ') for line in f]
-    input = []
+    expressions = []
     for line in f:
         tmp_line = []
         for s in line:
@@ -108,14 +109,12 @@ def main():
             else:
                 for ss in s:
                     tmp_line.append(ss)
-        input.append(tmp_line)
-    # print(input)
-    ans1 = part1(input)
+        expressions.append(tmp_line)
+
+    ans1 = part1(expressions)
     print('part1:', ans1)
-    ans2 = part2(input)
+    ans2 = part2(expressions)
     print('part2:', ans2)
 
 
 main()
-
-
