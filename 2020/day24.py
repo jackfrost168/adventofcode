@@ -58,8 +58,8 @@ def main():
         f = f.readlines()
         tiles_list = [line.strip() for line in f]
 
-    direction = {'nw':(-1, -1), 'sw':(1, -1), 'ne':(-1, 1),
-                 'se':(1, 1), 'w':(0, -2), 'e':(0, 2)}
+    direction = {'nw': (-1, -1), 'sw': (1, -1), 'ne': (-1, 1),
+                 'se': (1, 1), 'w': (0, -2), 'e': (0, 2)}
 
     ans1, blacks = part1(tiles_list, direction)
     print('part1:', ans1)
