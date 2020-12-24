@@ -10,6 +10,7 @@ def part1(tiles_list, direction):
             else:
                 steps.append(line[i])
                 i = i + 1
+
         x = 0
         y = 0
         for step in steps:
@@ -24,7 +25,6 @@ def part1(tiles_list, direction):
 
 
 def part2(blacks, direction):
-    blacks = set(blacks)
     day = 0
     while day < 100:
         cur_blacks = blacks.copy()
@@ -35,14 +35,11 @@ def part2(blacks, direction):
                 js = [j for j in range(-201, 202, 2)]
             for j in js:
                 black_neighbor = 0
-                white_neighbor = 0
                 for key in direction:
                     x = direction[key][0]
                     y = direction[key][1]
                     if (i+x, j+y) in blacks:
                         black_neighbor += 1
-                    else:
-                        white_neighbor += 1
 
                 if (i, j) in blacks:
                     if black_neighbor == 0 or black_neighbor > 2:
@@ -52,8 +49,7 @@ def part2(blacks, direction):
                         cur_blacks.add((i, j))
         blacks = cur_blacks.copy()
         day = day + 1
-        # if day%20 == 0:
-        #     print('day, tiles:', day, len(blacks))
+
     return len(blacks)
 
 
