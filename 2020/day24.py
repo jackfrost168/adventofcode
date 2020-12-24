@@ -52,8 +52,8 @@ def part2(blacks, direction):
                         cur_blacks.add((i, j))
         blacks = cur_blacks.copy()
         day = day + 1
-        if day%20 == 0:
-            print('day, tiles:', day, len(blacks))
+        # if day%20 == 0:
+        #     print('day, tiles:', day, len(blacks))
     return len(blacks)
 
 
