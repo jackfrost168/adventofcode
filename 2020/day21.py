@@ -1,9 +1,9 @@
-def part1(input, appeared, list_of_foods):
+def part1(ingredients_map, appeared, list_of_foods):
     final_allergens = {}
-    while input.keys():
-        allergens = input.keys()
+    while ingredients_map.keys():
+        allergens = ingredients_map.keys()
         for allergen in allergens:
-            ingredients_related_to_allergen = input[allergen]
+            ingredients_related_to_allergen = ingredients_map[allergen]
             count_valid_allergens = 0
             valid_ingredients = []
             for ingredient in set(ingredients_related_to_allergen):
@@ -14,10 +14,10 @@ def part1(input, appeared, list_of_foods):
 
             if count_valid_allergens == 1:
                 final_allergens[allergen] = valid_ingredients[0]
-                del input[allergen]
+                del ingredients_map[allergen]
                 for key in allergens:
-                    while valid_ingredients[0] in input[key]:
-                        input[key].remove(valid_ingredients[0])
+                    while valid_ingredients[0] in ingredients_map[key]:
+                        ingredients_map[key].remove(valid_ingredients[0])
                 break
 
     cleared_ingredients = [final_allergens[key] for key in final_allergens.keys()]
@@ -44,7 +44,7 @@ def main():
     with open('input/input21.txt', 'r') as f:
         f = f.readlines()
         list_of_foods = []
-        input = {}
+        ingredients_map = {}
         appeared = {}
         for line in f:
             line = line.strip().split('(contains')
@@ -54,18 +54,17 @@ def main():
             allergens[-1] = allergens[-1].replace(')', '')
             for allergen in allergens:
                 allergen = allergen.strip()
-                if allergen not in input.keys():
-                    input[allergen] = ingredients[:]
+                if allergen not in ingredients_map.keys():
+                    ingredients_map[allergen] = ingredients[:]
                     appeared[allergen] = 1
                 else:
-                    input[allergen] += ingredients
+                    ingredients_map[allergen] += ingredients
                     appeared[allergen] += 1
 
-    ans1, final_allergens = part1(input, appeared, list_of_foods)
+    ans1, final_allergens = part1(ingredients_map, appeared, list_of_foods)
     print('part1:', ans1)
     ans2 = part2(final_allergens)
     print('part2:', ans2)
 
 
 main()
-
