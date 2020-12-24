@@ -23,7 +23,7 @@ def part1(ticket_fileds, nearby_tickets):
 
 
 def part2(ticket_fileds, valid_tickets, your_ticket):
-    fields = [[] for i in range(len(your_ticket))]
+    fields = [[] for _ in range(len(your_ticket))]
     for j in range(len(valid_tickets[0])):
         for key in ticket_fileds.keys():
             field_valid = True
@@ -71,7 +71,7 @@ def main():
     your_ticket = ''
     nearby_tickets = []
 
-    def recort_your_ticket(line, i):
+    def record_your_ticket(line, i):
         line = line.strip().split(',')
         your_ticket = [int(value) for value in line]
         return your_ticket, i+1
@@ -100,7 +100,7 @@ def main():
         line = lines[i]
         line = line.strip()
         if line == 'your ticket:':
-            your_ticket, i = recort_your_ticket(lines[i+1], i+1)
+            your_ticket, i = record_your_ticket(lines[i+1], i+1)
         elif line == 'nearby tickets:':
             nearby_tickets, i = record_nearby_tickets(lines[i+1:], i+1)
         elif line == '':
