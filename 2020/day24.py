@@ -34,18 +34,18 @@ def part2(blacks, direction):
             else:
                 js = [j for j in range(-201, 202, 2)]
             for j in js:
-                black_neighbor = 0
+                black_neighbors = 0
                 for key in direction:
                     x = direction[key][0]
                     y = direction[key][1]
                     if (i+x, j+y) in blacks:
-                        black_neighbor += 1
+                        black_neighbors += 1
 
                 if (i, j) in blacks:
-                    if black_neighbor == 0 or black_neighbor > 2:
+                    if black_neighbors == 0 or black_neighbors > 2:
                         cur_blacks.remove((i, j))
                 else:
-                    if black_neighbor == 2:
+                    if black_neighbors == 2:
                         cur_blacks.add((i, j))
         blacks = cur_blacks.copy()
         day = day + 1
