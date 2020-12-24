@@ -1,6 +1,6 @@
-def part1(input):
+def part1(groups):
     ans = 0
-    for group in input:
+    for group in groups:
         yes_map = {}
         for person in group:
             for s in person:
@@ -10,9 +10,9 @@ def part1(input):
     return ans
 
 
-def part2(input):
+def part2(groups):
     ans = 0
-    for group in input:
+    for group in groups:
         yes_map = {}
         for person in group:
             for s in person:
@@ -29,22 +29,22 @@ def part2(input):
 
 
 def main():
-    with open("input/input6.txt", "r") as f: # open file
-        lines = f.readlines()  # read line, lines stores the txt file
-        input = []
+    with open("input/input6.txt", "r") as f:
+        lines = f.readlines()
+        groups = []
         tmp = []
         for line in lines:
-            line = line.strip('\n')  # take away '\n'
+            line = line.strip('\n')
             if len(line) != 0:
                 tmp.append(line[:])
             else:
-                input.append(tmp)
+                groups.append(tmp)
                 tmp = []
-        input.append(tmp)
+        groups.append(tmp)
 
-    ans1 = part1(input)
+    ans1 = part1(groups)
     print('part1:', ans1)
-    ans2 = part2(input)
+    ans2 = part2(groups)
     print('part2:', ans2)
 
 
