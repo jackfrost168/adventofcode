@@ -1,11 +1,11 @@
-def part1(input):
+def part1(instructions):
     dirs = 'NESW'
     moves = [(-1, 0), (0, 1), (1, 0), (0, -1)]
     x = 0
     y = 0
     direction = 'E'
 
-    for (action, value) in input:
+    for (action, value) in instructions:
         if action in dirs:
             ind = dirs.index(action)
             x = x + moves[ind][0] * value
@@ -27,7 +27,7 @@ def part1(input):
     return abs(x)+abs(y)
 
 
-def part2(input):
+def part2(instructions):
     ship_x = 0
     ship_y = 0
     dirs = 'NESW'
@@ -35,7 +35,7 @@ def part2(input):
     wp_y = 10
     moves = [(-1, 0), (0, 1), (1, 0), (0, -1)]
 
-    for (action, value) in input:
+    for (action, value) in instructions:
         if action in 'NESW':
             ind = dirs.index(action)
             wp_x = wp_x + moves[ind][0] * value
@@ -56,25 +56,22 @@ def part2(input):
 
 
 def main():
-    with open("input/input12.txt", "r") as f: # open file
-        lines = f.readlines()  # read line, lines stores the txt file
-        input = []
+    with open("input/input12.txt", "r") as f:
+        lines = f.readlines()
+        instructions = []
         for line in lines:
             line = line.strip('\n')
             action = line[0]
             value = int(line[1:])
-            input.append((action, value))
+            instructions.append((action, value))
 
-    ans1 = part1(input)
+    ans1 = part1(instructions)
     print('part1:', ans1)
-    ans2 = part2(input)
+    ans2 = part2(instructions)
     print('part2:', ans2)
 
 
 main()
-
-
-
 
 # trash
 # import math
