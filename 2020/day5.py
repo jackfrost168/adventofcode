@@ -1,13 +1,12 @@
-with open("input/input5.txt", "r") as f: #open file
-    lines = f.readlines()        #read line, lines stores the txt file
-    input = [line.strip() for line in lines]
-
-
 def main():
+    with open("input/input5.txt", "r") as f:  # open file
+        lines = f.readlines()  # read line, lines stores the txt file
+        boarding_passes = [line.strip() for line in lines]
+
     ans = 0
     passagers = [0]*843
-    #print(passagers)
-    for seat in input:
+
+    for seat in boarding_passes:
         row = seat[0:7]
         column = seat[7:]
         left = 0
