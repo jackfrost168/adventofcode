@@ -40,7 +40,8 @@ def part2(lower_bound, upper_bound):
 
 
 def main():
-    f = "264793-803935".split("-")
+    with open('input/input4.txt', 'r') as f:
+        f = f.read().strip().split("-")  #f = "264793-803935".split("-")
 
     lower_bound = int(f[0])
     upper_bound = int(f[1])
