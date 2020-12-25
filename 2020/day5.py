@@ -42,7 +42,6 @@ def main():
     for i in range(len(passagers)):
         if passagers[i] == 0:
             myid = i
-
     print("part2:", myid)
 
 
