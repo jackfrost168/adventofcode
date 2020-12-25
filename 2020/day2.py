@@ -1,30 +1,30 @@
 def part1(passwords):
-    ans = 0
+    valid = 0
     for line in passwords:
-        lower_bound = line[0]
-        upper_bound = line[1]
+        lower_bound = int(line[0])
+        upper_bound = int(line[1])
         target = line[2]
         string = line[3]
         count = 0
         for word in string:
             if word == target:
                 count = count + 1
-        if count >= lower_bound and count <= upper_bound:
-            ans = ans + 1
-    return ans
+        if lower_bound <= count <= upper_bound:
+            valid = valid + 1
+    return valid
 
 
 def part2(passwords):
-    ans = 0
+    valid = 0
     for line in passwords:
-        pos1 = line[0]
-        pos2 = line[1]
+        pos1 = int(line[0]) - 1
+        pos2 = int(line[1]) - 1
         target = line[2]
         string = line[3]
-        if (string[pos1-1] == target and string[pos2-1] != target) or\
-            (string[pos1-1] != target and string[pos2-1] == target):
-            ans = ans + 1
-    return ans
+        if (string[pos1] == target and string[pos2] != target) or\
+            (string[pos1] != target and string[pos2] == target):
+            valid = valid + 1
+    return valid
 
 
 def main():
@@ -32,15 +32,8 @@ def main():
         lines = f.readlines()  # read line, lines stores the txt file
         passwords = []  # [2, 9, 'g', 'jpxcgggzgsgngrhght']
         for line in lines:
-            line = line.strip('\n')
-            line = line.split(" ")  # take away '\n'
-            tmp = []
-            r = line[0].split('-')
-            tmp.append(int(r[0]))
-            tmp.append((int(r[1])))
-            tmp.append(line[1][0]) #single word
-            tmp.append(line[2]) #string
-            passwords.append(tmp)
+            line = line.strip('\n').replace('-', ' ').replace(':', '').split(' ')
+            passwords.append(line)
 
     ans1 = part1(passwords)
     print("part1:", ans1)
