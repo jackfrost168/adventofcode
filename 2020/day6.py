@@ -35,7 +35,7 @@ def main():
         tmp = []
         for line in lines:
             line = line.strip('\n')
-            if len(line) != 0:
+            if line:
                 tmp.append(line[:])
             else:
                 groups.append(tmp)
