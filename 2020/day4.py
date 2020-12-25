@@ -90,9 +90,9 @@ def main():
         passports.append(tmp)
 
     ans1 = part1(passports)
-    print("part1:", ans1)
+    print("part 1:", ans1)
     ans2 = part2(passports)
-    print("part2:", ans2)
+    print("part 2:", ans2)
 
 
 main()
