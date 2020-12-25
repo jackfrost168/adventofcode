@@ -26,9 +26,9 @@ def main():
         expense_report = [int(line.strip()) for line in f]
 
     ans1 = sum2(expense_report)
-    print("part1:", ans1)
+    print("part 1:", ans1)
     ans2 = sum3(expense_report)
-    print("part2:", ans2)
+    print("part 2:", ans2)
 
 
 main()
