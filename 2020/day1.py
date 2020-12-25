@@ -1,7 +1,7 @@
 def sum2(arr):
-    for a in arr:
-        if 2020 - a in arr:
-            ans = a * (2020 - a)
+    for entry in arr:
+        if 2020 - entry in arr:
+            ans = entry * (2020 - entry)
             return ans
 
 
@@ -21,7 +21,7 @@ def sum3(arr):
 
 
 def main():
-    with open("input/input1.txt", "r") as f: # open file
+    with open("input/input1.txt", "r") as f:  # open file
         f = f.readlines()  # read line, lines stores the txt file
         expense_report = [int(line.strip()) for line in f]
 
