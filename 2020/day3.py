@@ -19,7 +19,7 @@ def main():
         map_grid = [line.strip() for line in lines]
 
     ans1 = slope(map_grid, 3, 1)
-    print('part1:', ans1)
+    print('part 1:', ans1)
 
     tmp1 = slope(map_grid, 1, 1)
     tmp2 = slope(map_grid, 3, 1)
@@ -27,7 +27,7 @@ def main():
     tmp4 = slope(map_grid, 7, 1)
     tmp5 = slope(map_grid, 1, 2)
     ans2 = tmp1*tmp2*tmp3*tmp4*tmp5
-    print('part2:', ans2)
+    print('part 2:', ans2)
 
 
 main()
