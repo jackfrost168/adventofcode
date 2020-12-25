@@ -5,10 +5,7 @@ def part1(passwords):
         upper_bound = int(line[1])
         target = line[2]
         string = line[3]
-        count = 0
-        for word in string:
-            if word == target:
-                count = count + 1
+        count = string.count(target)
         if lower_bound <= count <= upper_bound:
             valid = valid + 1
     return valid
@@ -36,9 +33,9 @@ def main():
             passwords.append(line)
 
     ans1 = part1(passwords)
-    print("part1:", ans1)
+    print("part 1:", ans1)
     ans2 = part2(passwords)
-    print("part2:", ans2)
+    print("part 2:", ans2)
 
 
 main()
