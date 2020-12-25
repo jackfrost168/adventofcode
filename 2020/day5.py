@@ -36,13 +36,13 @@ def main():
         if id > ans:
             ans = id
 
-    print("part1:", ans)
+    print("part 1:", ans)
 
     myid = 0
     for i in range(len(passagers)):
         if passagers[i] == 0:
             myid = i
-    print("part2:", myid)
+    print("part 2:", myid)
 
 
 main()
