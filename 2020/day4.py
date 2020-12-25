@@ -2,7 +2,7 @@ def part1(passports):
     ans = 0
     for passport in passports:
         passport = passport.split(' ')
-        valid = {'byr':0, 'iyr':0, 'eyr':0, 'ecl':0, 'pid':0, 'hcl': 0, 'hgt':0}
+        valid = {'byr': 0, 'iyr': 0, 'eyr': 0, 'ecl': 0, 'pid': 0, 'hcl': 0, 'hgt': 0}
         for fields in passport:
             field = fields[0:3]
             if field in valid.keys():
@@ -19,42 +19,37 @@ def part1(passports):
 def part2(passports):
     ans = 0
     for passport in passports:
-        passport = passport.split(' ')
-        valid = {'byr':0, 'iyr':0, 'eyr':0, 'ecl':0, 'pid':0, 'hcl': 0, 'hgt':0}
+        passport = passport.strip().split(' ')
+        valid = {'byr': 0, 'iyr': 0, 'eyr': 0, 'ecl': 0, 'pid': 0, 'hcl': 0, 'hgt': 0}
         for fields in passport:
             field = fields[0:3]
             if field == 'byr':
-                year = fields[4:]
-                if len(year) == 4:
-                    year = int(year)
-                    if year >= 1920 and year <= 2002:
-                        valid[field] += 1
+                year = int(fields[4:])
+                if 1920 <= year <= 2002:
+                    valid[field] += 1
             if field == 'iyr':
-                year = fields[4:]
-                if len(year) == 4:
-                    year = int(year)
-                    if year >= 2010 and year <= 2020:
-                        valid[field] += 1
+                year = int(fields[4:])
+                if 2010 <= year <= 2020:
+                    valid[field] += 1
             if field == 'eyr':
-                year = fields[4:]
-                if len(year) == 4:
-                    year = int(year)
-                    if year >= 2020 and year <= 2030:
-                        valid[field] += 1
+                year = int(fields[4:])
+                if 2020 <= year <= 2030:
+                    valid[field] += 1
             if field == 'hgt':
                 unit = fields[-2:]
                 if unit == 'cm':
-                    if int(fields[4:-2]) >= 150 and int(fields[4:-2]) <= 193:
+                    height = int(fields[4:-2])
+                    if 150 <= height <= 193:
                         valid[field] += 1
                 if unit == 'in':
-                    if int(fields[4:-2]) >= 59 and int(fields[4:-2]) <= 76:
+                    height = int(fields[4:-2])
+                    if 59 <= height <= 76:
                         valid[field] += 1
             if field == 'hcl':
                 digit = 0
                 if fields[4] == '#' and len(fields[5:]) == 6:
                     for h in range(5, len(fields)):
-                        if (fields[h] >= '0' and fields[h] <= '9') or \
-                            (fields[h] >= 'a' and fields[h] <= 'f'):
+                        if ('0' <= fields[h] <= '9') or ('a' <= fields[h] <= 'f'):
                             digit = digit + 1
                 if digit == 6:
                     valid[field] += 1
@@ -64,11 +59,11 @@ def part2(passports):
                         valid[field] += 1
             if field == 'pid':
                 if len(fields[4:]) == 9:
-                    p = 0
+                    digit = 0
                     for s in fields[4:]:
-                        if s >= '0' and s <= '9':
-                            p = p + 1
-                    if p == 9:
+                        if '0' <= s <= '9':
+                            digit = digit + 1
+                    if digit == 9:
                         valid[field] += 1
 
         count = 0
@@ -86,8 +81,8 @@ def main():
         passports = []
         tmp = ""
         for line in lines:
-            line = line.strip('\n')
-            if len(line) != 0:
+            line = line.strip()
+            if line:
                 tmp = tmp + line + " "
             else:
                 passports.append(tmp)
