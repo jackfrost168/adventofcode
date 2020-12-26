@@ -81,11 +81,10 @@ def part2(masks):
 
 def main():
     with open('input/input14.txt', 'r') as f:
-        lines = f.readlines()
         masks = {}
         i = 0
         mask = ''
-        for line in lines:
+        for line in f:
             if line.startswith('mask'):
                 line = line.strip('\n')
                 line = line.split('=')
