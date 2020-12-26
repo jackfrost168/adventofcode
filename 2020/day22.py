@@ -70,7 +70,6 @@ def game(player1, player2):
 
 def main():
     with open('input/input22.txt', 'r') as f:
-        f = f.readlines()
         player1 = []
         player2 = []
         player = 0
