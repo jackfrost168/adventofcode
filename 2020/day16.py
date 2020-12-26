@@ -59,7 +59,6 @@ def part2(ticket_fileds, valid_tickets, your_ticket):
         field = field[0]
         if field.startswith('departure'):
             ans = ans * your_ticket[i]
-
     return ans
 
 
