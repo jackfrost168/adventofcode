@@ -55,7 +55,6 @@ def part2(blacks, direction):
 
 def main():
     with open('input/input24.txt', 'r') as f:
-        f = f.readlines()
         tiles_list = [line.strip() for line in f]
 
     direction = {'nw': (-1, -1), 'sw': (1, -1), 'ne': (-1, 1),
