@@ -57,7 +57,7 @@ def part2(ticket_fileds, valid_tickets, your_ticket):
     ans = 1
     for i, field in enumerate(fields):
         field = field[0]
-        if len(field) >= len('departure') and field[0: len('departure')] == 'departure':
+        if field.startswith('departure'):
             ans = ans * your_ticket[i]
 
     return ans
@@ -88,10 +88,8 @@ def main():
             line = line.split(':')
             ticket_fileds[line[0]] = []
             range_ = line[1].split('or')
-            range1 = range_[0].replace(' ', '')
-            range2 = range_[1].replace(' ', '')
-            range1 = range1.split('-')
-            range2 = range2.split('-')
+            range1 = range_[0].replace(' ', '').split('-')
+            range2 = range_[1].replace(' ', '').split('-')
             ticket_fileds[line[0]].append((int(range1[0]), int(range1[1])))
             ticket_fileds[line[0]].append((int(range2[0]), int(range2[1])))
         return ticket_fileds, len(lines)
