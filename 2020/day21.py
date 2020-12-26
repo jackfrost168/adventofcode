@@ -42,7 +42,6 @@ def part2(final_allergens):
 
 def main():
     with open('input/input21.txt', 'r') as f:
-        f = f.readlines()
         list_of_foods = []
         ingredients_map = {}
         appeared = {}
