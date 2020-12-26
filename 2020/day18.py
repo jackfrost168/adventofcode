@@ -65,7 +65,6 @@ def part2(expressions):
         c = line[0]
         i = 0
         while i < len(line) and c != '#':
-            #c = line[i]
             while c != '#' or operator[-1] != '#':
                 if c not in '+*()#':
                     stack.append(c)
