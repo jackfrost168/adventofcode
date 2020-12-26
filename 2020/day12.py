@@ -57,9 +57,8 @@ def part2(instructions):
 
 def main():
     with open("input/input12.txt", "r") as f:
-        lines = f.readlines()
         instructions = []
-        for line in lines:
+        for line in f:
             line = line.strip('\n')
             action = line[0]
             value = int(line[1:])
