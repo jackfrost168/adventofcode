@@ -1,13 +1,13 @@
 def part1(preamble):
     for i in range(25, len(preamble)):
-        tmp = preamble[i - 25: i]
-        cur_num = False
-        for t in tmp:
-            if preamble[i] - t in tmp and preamble[i] - t != t:
-                cur_num = True
+        tmp_nums = preamble[i - 25: i]
+        valid = False
+        for num in tmp_nums:
+            if preamble[i] - num in tmp_nums and preamble[i] - num != num:
+                valid = True
                 break
 
-        if cur_num == False:
+        if valid is False:
             return preamble[i]
 
 
@@ -22,8 +22,7 @@ def part2(preamble, target):
 
 def main():
     with open("input/input9.txt", "r") as f:
-        lines = f.readlines()
-        preamble = [int(line.strip()) for line in lines]
+        preamble = [int(line.strip()) for line in f]
 
     ans1 = part1(preamble)
     print('part1:', ans1)
