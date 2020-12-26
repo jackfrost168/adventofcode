@@ -47,20 +47,21 @@ def visual_condition(seat_layout, i, j, direction):
 def part1(seat_layout, direction):
     while True:
         change = 0
-        tmp_input = copy.deepcopy(seat_layout)
+        cur_layout = copy.deepcopy(seat_layout)
         for i in range(len(seat_layout)):
             for j in range(len(seat_layout[0])):
-                if tmp_input[i][j] == '.':
+                if cur_layout[i][j] == '.':
                     continue
-                occupied, empty_or_floor, num_neighbors = neighbor_condition(tmp_input, i, j, direction)
-                if tmp_input[i][j] == 'L':
+                occupied, empty_or_floor, num_neighbors = neighbor_condition(cur_layout, i, j, direction)
+                if cur_layout[i][j] == 'L':
                     if empty_or_floor == num_neighbors:
                         seat_layout[i][j] = '#'
                         change = change + 1
-                elif tmp_input[i][j] == '#':
+                elif cur_layout[i][j] == '#':
                     if occupied >= 4:
                         seat_layout[i][j] = 'L'
                         change = change + 1
+
         if change == 0:
             ans = 0
             for row in seat_layout:
@@ -71,17 +72,17 @@ def part1(seat_layout, direction):
 def part2(seat_layout, direction):
     while True:
         change = 0
-        tmp_input = copy.deepcopy(seat_layout)
+        cur_layout = copy.deepcopy(seat_layout)
         for i in range(len(seat_layout)):
             for j in range(len(seat_layout[0])):
-                if tmp_input[i][j] == '.':
+                if cur_layout[i][j] == '.':
                     continue
-                occupied, empty_or_floor, num_neighbors = visual_condition(tmp_input, i, j, direction)
-                if tmp_input[i][j] == 'L':
+                occupied, empty_or_floor, num_neighbors = visual_condition(cur_layout, i, j, direction)
+                if cur_layout[i][j] == 'L':
                     if occupied == 0:
                         seat_layout[i][j] = '#'
                         change = change + 1
-                elif tmp_input[i][j] == '#':
+                elif cur_layout[i][j] == '#':
                     if occupied >= 5:
                         seat_layout[i][j] = 'L'
                         change = change + 1
@@ -95,8 +96,7 @@ def part2(seat_layout, direction):
 
 def main():
     with open("input/input11.txt", "r") as f:
-        lines = f.readlines()
-        seat_layout = [list(line.strip()) for line in lines]
+        seat_layout = [list(line.strip()) for line in f]
 
     direction = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
     seat_layout1 = copy.deepcopy(seat_layout)
