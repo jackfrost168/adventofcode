@@ -168,7 +168,7 @@ final_image = {}
 
 def main():
     with open('input/input20.txt', 'r') as f:
-        f = f.readlines()
+        #f = f.readlines()
         images = {}
         for line in f:
             line = line.strip()
