@@ -8,8 +8,8 @@ def part1(G, target):
 def part2(G, target):
     for node in nx.dfs_postorder_nodes(G, target):
         cur_weight = 0
-        for (bag, info) in G[node].items():
-            cur_weight += (G.nodes[bag]['weight'] + 1) * info['weight']
+        for (contain_bag, bag_to_contain) in G[node].items():
+            cur_weight += bag_to_contain['weight'] * (G.nodes[contain_bag]['weight'] + 1)
         G.nodes[node]["weight"] = cur_weight
 
     return G.nodes["shiny gold"]['weight']
