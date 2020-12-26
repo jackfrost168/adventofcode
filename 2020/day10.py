@@ -29,33 +29,29 @@ def part2(jolts):
             i = array.index(array[i]+1)
     base_array.append(max(array))
 
-    tmp = 1
+    ans = 1
     for a in base_array:
         if a+4 in base_array:
-            index0 = array.index(a)
-            index1 = array.index(a+4)
+            index0, index1 = array.index(a), array.index(a+4)
             length = index1 - index0 - 1
             if length >= 1:
-                tmp = tmp * (pow(2, length)-1)
+                ans = ans * (pow(2, length)-1)
         elif a+3 in base_array:
-            index0 = array.index(a)
-            index1 = array.index(a + 3)
+            index0, index1 = array.index(a), array.index(a + 3)
             length = index1 - index0 - 1
             if length >= 1:
-                tmp = tmp * pow(2, length)
+                ans = ans * pow(2, length)
         elif a+2 in base_array:
-            index0 = array.index(a)
-            index1 = array.index(a+2)
+            index0, index1 = array.index(a), array.index(a+2)
             length = index1 - index0 - 1
             if length == 1:
-                tmp = tmp * 2
-    return tmp
+                ans = ans * 2
+    return ans
 
 
 def main():
     with open("input/input10.txt", "r") as f:
-        lines = f.readlines()
-        jolts = [int(line.strip()) for line in lines]
+        jolts = [int(line.strip()) for line in f]
         jolts.append(0)
         jolts.append(max(jolts) + 3)
 
