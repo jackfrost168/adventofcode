@@ -51,8 +51,8 @@ def main():
         layers.append(f[i: i + 25 * 6])
 
     ans1 = part1(layers)
-    print('part1:', ans1)
-    print('part2:')
+    print('part 1:', ans1)
+    print('part 2:')  # AHFCB
     part2(layers)
 
 
