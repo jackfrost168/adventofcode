@@ -1,9 +1,9 @@
-#search speed: set>dict>>list
-def part2(input):
+# search speed: set>dict>>list
+def part2(changes):
     frequency = 0
     appeared = {0}
     while True:
-        for f in input:
+        for f in changes:
             frequency = frequency + f
             if frequency not in appeared:
                 appeared.add(frequency)
@@ -12,14 +12,13 @@ def part2(input):
 
 
 def main():
-    with open("input/input1.txt", "r") as f: # open file
-        lines = f.readlines()  # read line, lines stores the txt file
-        input = [int(line.strip()) for line in lines]
+    with open("input/input1.txt", "r") as f:  # open file
+        changes = [int(line.strip()) for line in f]
 
-    ans1 = sum(input)
-    print('part1:', ans1)
-    ans2 = part2(input)
-    print('part2:', ans2)
+    ans1 = sum(changes)
+    print('part 1:', ans1)
+    ans2 = part2(changes)
+    print('part 2:', ans2)
 
 
 main()
