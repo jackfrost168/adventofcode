@@ -1,42 +1,41 @@
 import networkx as nx
 
-def build_graph(input):
-    g = nx.DiGraph()
-    for pair in input:
-        if pair[0] not in g:
-            g.add_node(pair[0])
-        if pair[1] not in g:
-            g.add_node(pair[1])
-        g.add_edge(pair[1], pair[0])
-    return g
+
+def build_graph(orbits):
+    G = nx.DiGraph()
+    for pair in orbits:
+        if pair[0] not in G:
+            G.add_node(pair[0])
+        if pair[1] not in G:
+            G.add_node(pair[1])
+        G.add_edge(pair[1], pair[0])
+    return G
 
 
-def part1(g):
+def part1(G):
     ans = 0
-    for node in g.nodes():
-        pairs = nx.algorithms.ancestors(g, node)
+    for node in G.nodes():
+        pairs = nx.algorithms.ancestors(G, node)
         ans = ans + len(pairs)
     return ans
 
 
-def part2(g):
-    g = g.to_undirected()
-    length = nx.shortest_path_length(g, 'YOU', 'SAN')
+def part2(G):
+    G = G.to_undirected()
+    length = nx.shortest_path_length(G, 'YOU', 'SAN')
     length = length - 2
     return length
 
 
 def main():
     with open('input/input6.txt', 'r') as f:  # open file
-        input = [line.strip().split(')') for line in f.readlines()]
+        orbits = [line.strip().split(')') for line in f]
 
-    #g = nx.DiGraph()
-    g = build_graph(input)
-    ans1 = part1(g)
-    print('part1:', ans1)
-    ans2 = part2(g)
-    print('part2:', ans2)
+    G = build_graph(orbits)
+    ans1 = part1(G)
+    print('part 1:', ans1)
+    ans2 = part2(G)
+    print('part 2:', ans2)
 
 
 main()
-
