@@ -1,5 +1,4 @@
-def Intcode(program_copy, input):
-    program = program_copy[:]
+def Intcode(program, input):
     output = 0
     i = 0
     while i < len(program):
@@ -69,10 +68,10 @@ def main():
     with open('input/input5.txt', 'r') as f:
         program = [int(s) for s in f.read().strip().split(',')]
 
-    ans1 = Intcode(program, 1)
-    print("answer1:", ans1)
-    ans2 = Intcode(program, 5)
-    print("answer2:", ans2)
+    ans1 = Intcode(program[:], 1)
+    print("part 1:", ans1)
+    ans2 = Intcode(program[:], 5)
+    print("part 2:", ans2)
 
 
 main()
