@@ -1,5 +1,6 @@
 # Advent of Code
 Personal repository of Advent of Code solutions.
+
 https://adventofcode.com/
 
 ## About Advent of Code
@@ -7,6 +8,8 @@ Advent of Code is a programming competition in December every year. It' very int
 
 ## About this repo
 I discovered Advent of Code in 2018, and started to play until now. It's like a kind of game, after you solved the puzzles, you can move forward. it's a good way to improve programming skills and problem solving skills. In this repository you can find my solutions (some solutions are learned from some genius). 
-here is some private leaderboard and you can compete with 
+
+Here is some private leaderboard and you can compete with others.
+
 120635-5c140b9a
 422752-097bbcca (mine)
