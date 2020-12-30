@@ -1,5 +1,4 @@
-def Intcode(program_copy, input):
-    program = program_copy[:]
+def Intcode(program, input):
     output = []
     i = 0
     relative_base = 0
@@ -78,9 +77,9 @@ def main():
         program = [int(s) for s in f.read().strip().split(',')]
     program += [0] * 5000
 
-    ans1 = Intcode(program, 1)
-    print("answer1:", ans1[0])
-    ans2 = Intcode(program, 2)
-    print("answer2:", ans2[0])
+    ans1 = Intcode(program[:], 1)
+    print("part 1:", ans1[0])
+    ans2 = Intcode(program[:], 2)
+    print("part 2:", ans2[0])
 
 main()
