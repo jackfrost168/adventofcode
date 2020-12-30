@@ -8,7 +8,7 @@ def solution1(masses):
 def solution2(masses):
     ans = 0
     for num in masses:
-        while num > 5:  # num must greater than 0
+        while num > 5:
             num = num // 3 - 2
             ans = ans + num
     return ans
