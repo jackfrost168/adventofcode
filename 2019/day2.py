@@ -23,7 +23,7 @@ def main():
     with open('input/input2.txt') as f:
         integers = [int(s) for s in f.read().strip().split(',')]
     ans1 = Intcode(integers[:], 12, 2)
-    print("part1:", ans1)
+    print("part 1:", ans1)
 
     ans2 = 0
     for i in range(100):
@@ -33,7 +33,7 @@ def main():
                 ans2 = i * 100 + j
         if ans2 != 0:
             break
-    print("part2:", ans2)
+    print("part 2:", ans2)
 
 
 main()
