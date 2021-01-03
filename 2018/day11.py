@@ -46,7 +46,7 @@ def main():
 
     cells = generate_cells(serial_number)  # record the sum of position's all left and down
     col, row, _ = solution(cells, 3)
-    print('part 1:', str(col) + ',' + str(row))
+    print('part 1:', '{},{}'.format(col, row))
 
     col, row = 0, 0
     largest_power_size, largest_power = 0, 0
@@ -55,7 +55,7 @@ def main():
         if cur_largest_power > largest_power:
             largest_power = cur_largest_power
             col, row, largest_power_size = cur_col, cur_row, size
-    print('part 2:', str(col) + ',' + str(row) + ',' + str(largest_power_size))
+    print('part 2:', '{},{},{}'.format(col, row, largest_power_size))
 
 
 main()
