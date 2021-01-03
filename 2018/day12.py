@@ -15,6 +15,7 @@ def part1(rules, initial_state):
     for i, pot in enumerate(old_state):
         if pot == '#':
             total_pots += i - generation * 3
+
     return total_pots
 
 
