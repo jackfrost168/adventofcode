@@ -11,3 +11,5 @@ for i in range(len(digits)):
             captcha += int(digits[i])
 
 print(captcha)
+
+
