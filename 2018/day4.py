@@ -28,13 +28,13 @@ def part1(guard_map):
 
 
 def part2(guard_map):
-    frequent_sleep_minute = -1
-    frequent_sleep_guard = ''
-    frequent = 0
+    most_frequent_minute = -1
+    most_frequent_sleep_guard = ''
+    most_frequent = 0
     for guard in guard_map.keys():
         sleep_ranges = guard_map[guard]
         minute_count = 0
-        max_minute = -1
+        frequent_minute = -1
         for i in range(60):
             count = 0
             for (start, end) in sleep_ranges:
@@ -42,16 +42,15 @@ def part2(guard_map):
                     count += 1
             if count > minute_count:
                 minute_count = count
-                max_minute = i
-        if minute_count > frequent:
-            frequent_sleep_minute = max_minute
-            frequent_sleep_guard = guard
-            frequent = minute_count
+                frequent_minute = i
+        if minute_count > most_frequent:
+            most_frequent_minute = frequent_minute
+            most_frequent_sleep_guard = guard
+            most_frequent = minute_count
 
-    id = int(frequent_sleep_guard[1:])
-    print(frequent_sleep_minute*id)
+    id = int(most_frequent_sleep_guard[1:])
 
-    return frequent_sleep_minute*id
+    return most_frequent_minute * id
 
 
 def main():
