@@ -37,7 +37,7 @@ def part2(instructions):
 def main():
     with open("input/input2.txt", "r") as f:  # open file
         instructions: List[str] = f.readlines()  # read line, lines stores the txt file
-    f.close()
+
     instructions = [ins.strip() for ins in instructions]
     ans1 = part1(instructions[:])
     print("part 1:", ans1)

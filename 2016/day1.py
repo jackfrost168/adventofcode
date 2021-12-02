@@ -36,7 +36,7 @@ def part2(sequence):
 def main():
     with open("input/input1.txt", "r") as f:  # open file
         sequence = f.read().strip().split(' ')  # read line, lines stores the txt file
-    f.close()
+
     sequence = [step.strip(',') for step in sequence]
 
     ans1 = part1(sequence[:])
