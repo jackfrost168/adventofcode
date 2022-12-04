@@ -2,7 +2,6 @@ def part1(assignments):
     overlaps = 0
 
     for line in assignments:
-
         first = [int(i) for i in line[0].split('-')]
         second = [int(i) for i in line[1].split('-')]
 
