@@ -18,7 +18,7 @@ def part2(signal):
 
 
 def main():
-    with open("input/input.txt", "r") as f:  # open file
+    with open("input/input6.txt", "r") as f:  # open file
         signal = f.read()
 
     print("part 1:", part1(signal))
