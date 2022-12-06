@@ -3,7 +3,7 @@ def part1(signal):
         marker = {signal[i], signal[i+1], signal[i+2], signal[i+3]}
 
         if len(marker) == 4:
-            return i+4
+            return i + 4
 
 
 def part2(signal):
