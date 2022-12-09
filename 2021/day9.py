@@ -2,7 +2,7 @@ def check_lowest(heightmap, i, j):
     direction = ((1, 0), (-1, 0), (0, 1), (0, -1))
 
     for d_x, d_y in direction:
-        if  0 <= i+d_x <= len(heightmap)-1 and 0 <= j+d_y <= len(heightmap[0])-1:
+        if 0 <= i+d_x <= len(heightmap)-1 and 0 <= j+d_y <= len(heightmap[0])-1:
             if heightmap[i][j] >= heightmap[i+d_x][j+d_y]:
                 return False
 
