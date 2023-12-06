@@ -59,6 +59,6 @@ def main():
                 almanac[part[0].split(' ')[0]] = maps
 
         print("part 1:", part1(almanac))
-        print("part 2:", part2(almanac)) # About 20 minutes
+        print("part 2:", part2(almanac)) # About 20 minutes. Answer: 34039469
 
 main()
