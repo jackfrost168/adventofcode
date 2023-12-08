@@ -4,14 +4,11 @@ import math
 
 # Least Common Multiple
 def lcm(numbers):
-    def lcm_of_two(a, b):
-        return abs(a * b) // math.gcd(a, b)
+    ans = 1
+    for x in numbers:
+        ans = (x * ans) // math.gcd(x,ans)
 
-    lcm_result = numbers[0]
-    for number in numbers[1:]:
-        lcm_result = lcm_of_two(lcm_result, number)
-
-    return lcm_result
+    return ans
 
 
 def part1(instructions, nodes):
