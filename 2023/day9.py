@@ -26,12 +26,7 @@ def part(history, add_last=True):
 
 def main():
     with open('input/input9.txt') as f:
-        input = [line.strip().split() for line in f.readlines()]
-        #print(input)
-        history = []
-        for line in input:
-            line = [int(num) for num in line]
-            history.append(line)
+        history = [list(map(int, line.strip().split())) for line in f.readlines()]
 
         print('part1:', part(history[:], add_last=True))
         print('part2:', part(history[:], add_last=False))
